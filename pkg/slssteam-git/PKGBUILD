@@ -14,7 +14,7 @@ depends=("steam"
 
 optdepends=("steam-native"
 			"ccache: Speeds up compilation"
-			"dotnet-runtime: sls-ticket-generator")
+			"dotnet-runtime-9.0: sls-ticket-generator")
 
 provides=("slssteam")
 conflicts=("slssteam")
@@ -22,7 +22,7 @@ conflicts=("slssteam")
 source=("git+$url#branch=dev")
 makedepends=("git"
 			"gcc"
-			"dotnet-sdk")
+			"dotnet-sdk-9.0")
 
 #Disable stripping to not mess up disturb ticket-grabber
 options=(!strip)
