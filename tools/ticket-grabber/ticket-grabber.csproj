@@ -6,6 +6,8 @@
     <RootNamespace>ticket_grabber</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>false</SelfContained>
   </PropertyGroup>
 
   <ItemGroup>
