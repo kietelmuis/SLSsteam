@@ -205,32 +205,6 @@ static void hkSteamEngine_Init(void* pSteamEngine)
 	g_pLog->once("g_pSteamEngine at %p\n", pSteamEngine);
 }
 
-__attribute__((hot))
-static bool hkSteamEngine_GetAPICallResult(void* pSteamEngine, uint32_t callbackHandle, uint32_t a2, void* pCallback, uint32_t callbackSize, uint32_t type, bool* pbFailed)
-{
-	const auto ret = Hooks::CSteamEngine_GetAPICallResult.tramp.fn(pSteamEngine, callbackHandle, a2, pCallback, callbackSize, type, pbFailed);
-
-	if (g_config.extendedLogging.get())
-	{
-		g_pLog->debug
-		(
-			"%s(%p, %p, %p, %p, %u, %p, %p) -> %i\n",
-
-			Hooks::CSteamEngine_GetAPICallResult.name.c_str(),
-			pSteamEngine,
-			callbackHandle,
-			a2,
-			pCallback,
-			callbackSize,
-			type,
-			pbFailed,
-			ret
-		);
-	}
-
-	return ret;
-}
-
 static uint32_t hkSteamEngine_SetAppIdForCurrentPipe(void* pSteamEngine, uint32_t appId, bool a2)
 {
 	FakeAppIds::setAppIdForCurrentPipe(appId);
@@ -981,7 +955,6 @@ namespace Hooks
 	DetourHook<CSteamMatchmakingServers_RequestInternetServerList_t> CSteamMatchmakingServers_RequestInternetServerList;
 
 	DetourHook<CSteamEngine_Init_t> CSteamEngine_Init;
-	DetourHook<CSteamEngine_GetAPICallResult_t> CSteamEngine_GetAPICallResult;
 	DetourHook<CSteamEngine_SetAppIdForCurrentPipe_t> CSteamEngine_SetAppIdForCurrentPipe;
 
 	DetourHook<CUser_CheckAppOwnership_t> CUser_CheckAppOwnership;
@@ -1037,7 +1010,6 @@ bool Hooks::setup()
 		&& CUser_GetSubscribedApps.setup(Patterns::CUser::GetSubscribedApps, &hkUser_GetSubscribedApps)
 
 		&& CSteamEngine_Init.setup(Patterns::CSteamEngine::Init, &hkSteamEngine_Init)
-		&& CSteamEngine_GetAPICallResult.setup(Patterns::CSteamEngine::GetAPICallResult, &hkSteamEngine_GetAPICallResult)
 		&& CSteamEngine_SetAppIdForCurrentPipe.setup(Patterns::CSteamEngine::SetAppIdForCurrentPipe, &hkSteamEngine_SetAppIdForCurrentPipe)
 
 		&& IClientAppManager_BCanRemotePlayTogether.setup(Patterns::IClientAppManager::BCanRemotePlayTogether, hkClientAppManager_BCanRemotePlayTogether)
@@ -1079,7 +1051,6 @@ void Hooks::place()
 	CProtoBufMsgBase_Send.place();
 
 	CSteamEngine_Init.place();
-	CSteamEngine_GetAPICallResult.place();
 	CSteamEngine_SetAppIdForCurrentPipe.place();
 
 	CSteamMatchmakingServers_GetServerDetails.place();
@@ -1119,7 +1090,6 @@ void Hooks::remove()
 	CProtoBufMsgBase_Send.remove();
 
 	CSteamEngine_Init.remove();
-	CSteamEngine_GetAPICallResult.remove();
 	CSteamEngine_SetAppIdForCurrentPipe.remove();
 
 	CSteamMatchmakingServers_GetServerDetails.remove();

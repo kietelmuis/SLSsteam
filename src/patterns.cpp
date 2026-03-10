@@ -96,12 +96,6 @@ namespace Patterns
 			"E8 ? ? ? ? 83 C4 10 8D 83 ? ? ? ? 83 EC 0C 89 AB",
 			SigFollowMode::Relative
 		};
-		Pattern_t GetAPICallResult
-		{
-			"CSteamEngine::GetAPICallResult",
-			"E8 ? ? ? ? 83 C4 20 84 C0 75 ? 8B 86 ? ? ? ? 83 C0 0F",
-			SigFollowMode::Relative
-		};
 		Pattern_t SetAppIdForCurrentPipe
 		{
 			"CSteamEngine::SetAppIdForCurrentPipe",

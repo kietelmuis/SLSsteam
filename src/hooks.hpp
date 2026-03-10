@@ -84,7 +84,6 @@ namespace Hooks
 	typedef uint32_t(*CProtoBufMsgBase_Send_t)(CProtoBufMsgBase*);
 
 	typedef void(*CSteamEngine_Init_t)(void*);
-	typedef bool(*CSteamEngine_GetAPICallResult_t)(void*, uint32_t, uint32_t, void*, uint32_t, uint32_t, bool*);
 	typedef uint32_t(*CSteamEngine_SetAppIdForCurrentPipe_t)(void*, uint32_t, bool);
 
 	typedef gameserverdetails_t*(*CSteamMatchmakingServers_GetServerDetails_t)(void*, uint32_t, uint32_t);
@@ -120,7 +119,6 @@ namespace Hooks
 	extern DetourHook<IClientUserStats_PipeLoop_t> IClientUserStats_PipeLoop;
 
 	extern DetourHook<CSteamEngine_Init_t> CSteamEngine_Init;
-	extern DetourHook<CSteamEngine_GetAPICallResult_t> CSteamEngine_GetAPICallResult;
 	extern DetourHook<CSteamEngine_SetAppIdForCurrentPipe_t> CSteamEngine_SetAppIdForCurrentPipe;
 
 	extern DetourHook<CUser_CheckAppOwnership_t> CUser_CheckAppOwnership;
