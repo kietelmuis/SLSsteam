@@ -185,7 +185,7 @@ namespace Patterns
 		Pattern_t PipeLoop
 		{
 			"IClientApps::PipeLoop",
-			"FF B5 ? ? ? ? 50 8D 86 ? ? ? ? 68 44 08 00 00",
+			"E8 ? ? ? ? 8B 85 ? ? ? ? 83 C4 10 3D 39 9C 88 A6",
 			SigFollowMode::PrologueUpwards,
 			std::vector<uint8_t> { 0x56, 0x57, 0xe5, 0x89, 0x55 }
 		};
@@ -196,7 +196,7 @@ namespace Patterns
 		Pattern_t PipeLoop
 		{
 			"IClientRemoteStorage::PipeLoop",
-			"FF B5 ? ? ? ? 50 8D 86 ? ? ? ? 68 4D 0D 00 00",
+			"E8 ? ? ? ? 8B 85 ? ? ? ? 83 C4 10 3D 73 E8 2F 87",
 			SigFollowMode::PrologueUpwards,
 			std::vector<uint8_t> { 0x56, 0x57, 0xe5, 0x89, 0x55 }
 		};
@@ -207,7 +207,7 @@ namespace Patterns
 		Pattern_t PipeLoop
 		{
 			"IClientUser::PipeLoop",
-			"FF B5 ? ? ? ? 50 8D 86 ? ? ? ? 68 F4 02 00 00",
+			"E8 ? ? ? ? 8B 85 ? ? ? ? 83 C4 10 3D 10 A3 86 73",
 			SigFollowMode::PrologueUpwards,
 			std::vector<uint8_t> { 0x56, 0x57, 0xe5, 0x89, 0x55 }
 		};
@@ -215,7 +215,7 @@ namespace Patterns
 		Pattern_t BIsSubscribedApp
 		{
 			"IClientUser::BIsSubscribedApp",
-			"E8 ? ? ? ? 83 C4 10 84 C0 74 ? 8B 95 ? ? ? ? 83 EC 04",
+			"E8 ? ? ? ? 8D BB ? ? ? ? 88 44 24",
 			SigFollowMode::Relative
 		};
 		Pattern_t BLoggedOn
@@ -254,7 +254,7 @@ namespace Patterns
 		Pattern_t RequiresLegacyCDKey
 		{
 			"IClientUser::RequiresLegacyCDKey",
-			"C3 ? ? ? ? ? 8B 44 24 ? 83 C4 1C 89 F9 89 F2 5B 5E 5F 5D 2D 94 18 00 00",
+			"83 C4 1C 31 C0 5B 5E 5F 5D C3 ? ? ? ? ? 8B 44 24 ? 83 C4 1C 89 F9 89 F2 5B 5E 5F 5D 2D B4 18 00 00",
 			SigFollowMode::PrologueUpwards,
 			std::vector<uint8_t> { 0x53, 0x56, 0x57, 0x55 }
 		};
@@ -265,7 +265,7 @@ namespace Patterns
 		Pattern_t PipeLoop
 		{
 			"IClientUGC::PipeLoop",
-			"FF B5 ? ? ? ? 50 8D 86 ? ? ? ? 68 F6 11 00 00",
+			"E8 ? ? ? ? 8B 85 ? ? ? ? 83 C4 10 3D 14 0C D2 71",
 			SigFollowMode::PrologueUpwards,
 			std::vector<uint8_t> { 0x56, 0x57, 0xe5, 0x89, 0x55 }
 		};
@@ -276,7 +276,7 @@ namespace Patterns
 		Pattern_t PipeLoop
 		{
 			"IClientUserStats::PipeLoop",
-			"FF B5 ? ? ? ? 50 8D 86 ? ? ? ? 68 1D 0C 00 00",
+			"E8 ? ? ? ? 8B 85 ? ? ? ? 83 C4 10 3D 94 65 6D 87",
 			SigFollowMode::PrologueUpwards,
 			std::vector<uint8_t> { 0x56, 0x57, 0xe5, 0x89, 0x55 }
 		};
